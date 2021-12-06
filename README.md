@@ -40,3 +40,13 @@
        number then an operator and another number that calculation should be
        displayed if your next input is an operator. The result of the calculation
        should be used as the first number in your new calculation.**
+
+    2. You should round answers with long decimals so that they don’t overflow the screen.
+
+    3. Pressing `=` before entering all of the numbers or an operator could cause problems!
+
+    4. Pressing “clear” should wipe out any existing data.. make sure the user
+       is really starting fresh after pressing “clear”
+
+    5. Display a snarky error message if the user tries to divide by 0…
+       don’t let it crash your calculator!
