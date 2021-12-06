@@ -2,7 +2,7 @@
 
 ## Preview Link
 
-Link: [preview-link](https://balbader.github.io/calculator/)
+Link: [JS Calculator](https://balbader.github.io/calculator/)
 
 ## Guidelines
 
