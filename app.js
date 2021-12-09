@@ -1,10 +1,21 @@
+const state = {
+  currentOperand: "",
+  previousOperand: "",
+  operation: undefined,
+};
+
 const clear = () => {
-  currentOperand.innerText = "";
-  previousOperand.innerText = "";
+  const newState = {
+    currentOperand: "",
+    previousOperand: "",
+  };
+  return newState;
 };
 
 const deleteNumber = () => {
-  currentOperand.innerText = currentOperand.innerText.toString().slice(0, -1);
+  state.currentOperand.innerText = state.currentOperand.innerText
+    .toString()
+    .slice(0, -1);
 };
 
 const appendNumber = (number) => {
@@ -12,7 +23,7 @@ const appendNumber = (number) => {
     return;
   }
 
-  currentOperand.innerText =
+  state.currentOperand.innerText =
     currentOperand.innerText.toString() + number.toString();
 };
 
@@ -24,10 +35,9 @@ const chooseOperation = (operation) => {
   if (previousOperand !== "") {
     operate();
   }
-
-  operation = operation;
-  previousOperand = currentOperand;
-  currentOperand = "";
+  state.operation = operation;
+  state.previousOperand = currentOperand;
+  state.currentOperand = "";
 };
 
 const add = (a, b) => a + b;
@@ -58,9 +68,9 @@ const operate = () => {
       break;
   }
 
-  currentOperand = computation;
-  operation = undefined;
-  previousOperand = "";
+  state.currentOperand = computation;
+  state.operation = undefined;
+  state.previousOperand = "";
 };
 
 const getDisplayNumber = (number) => {
@@ -85,11 +95,13 @@ const getDisplayNumber = (number) => {
 };
 
 const updateDisplay = () => {
-  currentOperandTextElement.innerText = getDisplayNumber(previousOperand);
+  state.currentOperandTextElement.innerText = getDisplayNumber(
+    state.previousOperand
+  );
 
   if (operation != null) {
-    previousOperandTextElement.innerText = `${getDisplayNumber(
-      previousOperand
+    state.previousOperandTextElement.innerText = `${getDisplayNumber(
+      state.previousOperand
     )} ${operation}`;
   } else {
     previousOperandTextElement.innerText = "";
@@ -107,10 +119,6 @@ const previousOperandTextElement = document.querySelector(
 const currentOperandTextElement = document.querySelector(
   "[data-current-operand]"
 );
-
-let currentOperand = currentOperandTextElement;
-let previousOperand = previousOperandTextElement;
-let operation = undefined;
 
 numberButtons.foreach((button) => {
   button.addeventlistener("click", () => {
